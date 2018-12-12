@@ -4,8 +4,6 @@ package com.risksense.converters.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,7 +23,6 @@ import com.risksense.converters.XMLJSONConverterI;
 /**
  * This implementation provides methods that are required for creating a converter from XML to JSON.
  */
-@Component
 public class XMLJSONConverterImpl implements XMLJSONConverterI {
     /**
      * {@inheritDoc}
