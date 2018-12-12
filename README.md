@@ -1,6 +1,6 @@
 # converters
 
-This project provides API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
+This library provides API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
 
 JSON File:
 ```json
