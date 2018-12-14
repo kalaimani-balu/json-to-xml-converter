@@ -55,9 +55,9 @@ XML file:
 
 > cd json-to-xml-converter
 
-> chmod +x build
+> chmod +x build.sh
 
-> ./build
+> ./build.sh
 
 > java -jar target/json-to-xml-converter-1.0.jar
 
