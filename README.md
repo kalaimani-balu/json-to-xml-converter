@@ -61,7 +61,9 @@ _Prerequisites: Java 8 and Apache Maven 3.6.0_
 
 > ./build.sh
 
-> java -jar target/json-to-xml-converter-1.0.jar
+> cd target
+
+> java -jar json-to-xml-converter-1.0.jar
 
 After a successful build, You can copy the target jar anywhere and run using above command.
 
