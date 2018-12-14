@@ -51,6 +51,8 @@ XML file:
 ```
 **Steps to build and run the app**
 
+_Prerequisites: Java 8 and Apache Maven 3.6.0_
+
 > git clone https://github.com/kalaimani-balu/json-to-xml-converter.git
 
 > cd json-to-xml-converter
