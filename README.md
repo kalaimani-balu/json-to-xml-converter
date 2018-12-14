@@ -1,4 +1,4 @@
-# converters
+# JSON To XML Converter
 
 This library provides REST API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
 
@@ -59,6 +59,6 @@ XML file:
 
 > ./build
 
-> java -jar target/converters-1.0.jar
+> java -jar target/json-to-xml-converter-1.0.jar
 
 After a successful build, You can copy the target jar anywhere and run using above command.
