@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
@@ -53,8 +54,8 @@ public class XMLJSONConverterITest {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
 
-        Object generatedXML = ReflectionUtils.invokeMethod(convertJsonNodeToXML, converter, node);
-        Object formattedXML = ReflectionUtils.invokeMethod(prettyFormat, converter, generatedXML);
+        Object convertedXML = ReflectionUtils.invokeMethod(convertJsonNodeToXML, converter, node);
+        Object formattedXML = ReflectionUtils.invokeMethod(prettyFormat, converter, convertedXML);
 
         String expectedXML =
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -73,8 +74,23 @@ public class XMLJSONConverterITest {
         assertEquals(expectedXML, formattedXML);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void test_convertJSONtoXML_for_null_json() throws IOException {
+        converter.convertJSONtoXML(new File("/tmp/tmp.xml"), null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test_convertJSONtoXML_for_null_xml() throws IOException {
+        converter.convertJSONtoXML(null, new File("/tmp/tmp.xml"));
+    }
+
+    @Test(expected = NoSuchFileException.class)
+    public void test_convertJSONtoXML_for_non_existing_files() throws IOException {
+        converter.convertJSONtoXML(new File("/tmp/tmp.xml"), new File("/tmp/tmp.xml"));
+    }
+
     @Test
-    public void test_convertJSONtoXML() throws IOException  {
+    public void test_convertJSONtoXML_for_good_JSON() throws IOException  {
         File jsonFile = new File(XMLJSONConverterITest.class.getResource("/example.json").getFile());
         File expectedXmlFile = new File(XMLJSONConverterITest.class.getResource("/example.xml").getFile());
         File tempXmlFile = File.createTempFile("example-", ".xml");
@@ -82,9 +98,9 @@ public class XMLJSONConverterITest {
 
         try(BufferedReader tempXmlReader = Files.newBufferedReader(Paths.get(tempXmlFile.toURI()));
             BufferedReader xmlReader = Files.newBufferedReader(Paths.get(expectedXmlFile.toURI()))) {
-            String generatedXml = tempXmlReader.lines().collect(Collectors.joining("\n"));
+            String xml = tempXmlReader.lines().collect(Collectors.joining("\n"));
             String expectedXml = xmlReader.lines().collect(Collectors.joining("\n"));
-            assertEquals(expectedXml, generatedXml);
+            assertEquals(expectedXml, xml);
         }
 
         tempXmlFile.deleteOnExit();
