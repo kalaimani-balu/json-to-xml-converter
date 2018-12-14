@@ -1,6 +1,6 @@
 # converters
 
-This library provides API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
+This library provides REST API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
 
 JSON File:
 ```json
@@ -49,7 +49,7 @@ XML file:
    </array>
 </object>
 ```
-**Steps to build**
+**Steps to build and run the app**
 
 > git clone https://github.com/kalaimani-balu/converters.git
 
@@ -59,36 +59,6 @@ XML file:
 
 > ./build
 
-After a successful build, the target jar and pom files will be placed into local maven directory.
-Then you can use this library in your project as maven dependency like below,
-```xml
-<dependency>
-    <groupId>com.risksense</groupId>
-    <artifactId>converters</artifactId>
-    <version>1.0</version>
-</dependency>
-```
-Here is a trivial example of how you can use this library with spring boot application,
- ```java
-import com.risksense.converters.XMLJSONConverterI;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Service;
+> java -jar target/converters-1.0.jar
 
-import java.io.File;
-
-@Service
-@ComponentScan("com.risksense.converters")
-public class SomeService {
-    private XMLJSONConverterI converter;
-
-    @Autowired
-    public void setConverter(XMLJSONConverterI converter) {
-        this.converter = converter;
-    }
-
-    public void doConversion(String jsonPath, String xmlPath) throws IOException {
-        converter.convertJSONtoXML(new File(jsonPath), new File(xmlPath));
-    }
-}
-```
+After a successful build, You can copy the target jar anywhere and run using above command.
