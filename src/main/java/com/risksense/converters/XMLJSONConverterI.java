@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * This interface provides methods that are required for creating a converter from XML to JSON.
+ * This interface provides methods that are required for creating a converter from JSON to XML.
  */
 public interface XMLJSONConverterI {
 

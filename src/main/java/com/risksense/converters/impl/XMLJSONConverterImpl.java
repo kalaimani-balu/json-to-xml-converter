@@ -28,20 +28,35 @@ public class XMLJSONConverterImpl implements XMLJSONConverterI {
      * {@inheritDoc}
      */
     public void convertJSONtoXML(File json, File xml) throws IOException {
+        if (null == json || null == xml)
+            throw new IllegalArgumentException("Input files can't be null");
+
         try(BufferedReader reader = Files.newBufferedReader(Paths.get(json.toURI()));
             BufferedWriter writer = Files.newBufferedWriter(Paths.get(xml.toURI()))) {
             String jsonContent = reader.lines().collect(Collectors.joining());
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(jsonContent);
             writer.write(prettyFormat(convertJsonNodeToXML(node)));
+            writer.flush();
         }
     }
 
     // Converts given JsonNode to XML formatted String
     private String convertJsonNodeToXML(JsonNode node) {
+        if (node.isNull())
+            return "<null/>";
         if (node.isArray())
             return String.format("<array>%s</array>", format(node));
-        return String.format("<object>%s</object>", format(node));
+        if (node.isObject())
+            return String.format("<object>%s</object>", format(node));
+        if (node.isNumber())
+            return String.format("<number>%s</number>", node.asText());
+        if (node.isBoolean())
+            return String.format("<boolean>%s</boolean>", node.asText());
+        if (node.isObject())
+            return String.format("<object>%s</object>", node.asText());
+
+        return String.format("<string>%s</string>", node.asText());
     }
 
     // traverse the node and format every field inside recursively
