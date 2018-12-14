@@ -2,7 +2,7 @@
 
 This library provides REST API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
 
-JSON File:
+JSON input:
 ```json
 {
   "organization" : {
@@ -17,7 +17,7 @@ JSON File:
   "array_example1" : [1, "red", [{ "nested" : true}], { "obj" : false}]
 }
 ``` 
-XML file:
+XML output:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <object>
