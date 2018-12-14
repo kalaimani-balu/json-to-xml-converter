@@ -64,3 +64,4 @@ _Prerequisites: Java 8 and Apache Maven 3.6.0_
 > java -jar target/json-to-xml-converter-1.0.jar
 
 After a successful build, You can copy the target jar anywhere and run using above command.
+Post your JSON to "localhost:8080/json-to-xml-converter" and you'll get the data back, converted to XML.
