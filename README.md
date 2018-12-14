@@ -1,6 +1,6 @@
 # JSON To XML Converter
 
-This library provides REST API for converting JSON file to XML file with following format specification. Here is an example conversion from JSON to XML,
+This library provides REST API for converting the data from JSON to XML with following format specification. Here is an example conversion from JSON to XML,
 
 JSON input:
 ```json
