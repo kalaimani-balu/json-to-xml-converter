@@ -40,13 +40,13 @@ public class JsonToXmlServiceTest {
 
     @Test
     public void test_convertToXML_for_good_JSON() {
-        String xml = service.convertToXML("{\"name\": \"John Doe\"}");
-
         String expectedXml =
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<object>\n" +
                 "   <string name=\"name\">John Doe</string>\n" +
                 "</object>";
+
+        String xml = service.convertToXML("{\"name\": \"John Doe\"}");
         
         assertEquals(expectedXml, xml);
     }

@@ -71,11 +71,6 @@ public class ApiErrorHandler {
     public ResponseEntity<ApiError> jsonParseError(JsonParseException exception) {
         return ResponseEntity
                 .badRequest()
-                .body(new ApiError(
-                        new Date(),
-                        HttpStatus.BAD_REQUEST.value(),
-                        "Invalid JSON",
-                        exception.getMessage())
-                );
+                .body(new ApiError(new Date(), HttpStatus.BAD_REQUEST.value(), "Invalid JSON", exception.getMessage()));
     }
 }

@@ -29,7 +29,7 @@ public class XMLJSONConverterImpl implements XMLJSONConverterI {
      */
     public void convertJSONtoXML(File json, File xml) throws IOException {
         if (null == json || null == xml)
-            throw new IllegalArgumentException("Input files can't be null");
+            throw new IllegalArgumentException("Input(json) or output(xml) file instance can't be null");
 
         try(BufferedReader reader = Files.newBufferedReader(Paths.get(json.toURI()));
             BufferedWriter writer = Files.newBufferedWriter(Paths.get(xml.toURI()))) {
