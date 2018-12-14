@@ -51,9 +51,9 @@ XML file:
 ```
 **Steps to build and run the app**
 
-> git clone https://github.com/kalaimani-balu/converters.git
+> git clone https://github.com/kalaimani-balu/json-to-xml-converter.git
 
-> cd converters
+> cd json-to-xml-converter
 
 > chmod +x build
 
